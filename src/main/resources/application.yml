@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/service_monitor
+    username: YOUR_USERNAME # Здесь ваш Юзернейм
+    password: YOUR_PASSWORD # Здесь ваш пароль
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+
+app:
+  monitoring:
+    # Every minute at second 0
+    cron: "0 * * * * *"
+    request-timeout: 5s
+    connect-timeout: 3s
+    user-agent: "service-monitor/0.0.1"
+    max-body-bytes: 4096
